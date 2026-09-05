@@ -1,0 +1,35 @@
+flowchart TB
+    P["Six Custom-Built Physical Nodes"] --> V["Clustered Virtualization"]
+    V --> S["Distributed & Capacity Storage"]
+    V --> C["CPU & GPU Compute"]
+
+    C --> G["Controlled AI Model Gateway"]
+    G --> TA["Trusted Applications"]
+    G --> RW["Regulated Workloads"]
+    G --> HS["Hosted Sandbox"]
+
+    S --> TA
+    S --> RW
+
+    M["Management & Platform Services"] -. restricted administration .-> V
+    O["Monitoring, Alerting, Backup & Restore Validation"] -. observes and protects .-> V
+    O -. observes and protects .-> S
+    O -. observes and protects .-> TA
+    O -. observes and protects .-> RW
+
+    GOV["Data Classes, Least Privilege, Secret Handling & Change Control"] -. governs .-> G
+    GOV -. governs .-> TA
+    GOV -. governs .-> RW
+    GOV -. governs .-> HS
+
+    classDef physical fill:#E8F0FE,stroke:#1A73E8,color:#102A43,stroke-width:1.5px;
+    classDef platform fill:#E6F4EA,stroke:#188038,color:#102A43,stroke-width:1.5px;
+    classDef service fill:#F3E8FD,stroke:#8430CE,color:#102A43,stroke-width:1.5px;
+    classDef workload fill:#FFF4E5,stroke:#C26401,color:#102A43,stroke-width:1.5px;
+    classDef control fill:#FCE8E6,stroke:#D93025,color:#102A43,stroke-width:1.5px;
+
+    class P physical;
+    class V,S,C platform;
+    class G service;
+    class TA,RW,HS workload;
+    class M,O,GOV control;

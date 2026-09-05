@@ -1,0 +1,23 @@
+flowchart TB
+    GOV["Governance & Controls<br/>Data Classes · Least Privilege · Change Approval · Secret Handling"]
+    APP["Production Workloads<br/>Trusted Apps · Regulated Services · Hosted Sandbox · Bots & Automation"]
+    AI["AI & Data Services<br/>Controlled Model Gateway · Local Inference · Queues · Search & Retrieval"]
+    CMP["Compute Layer<br/>CPU Scheduling · 7 Active GPUs · ~54 GiB Active VRAM"]
+    STO["Storage Layer<br/>Distributed Storage · Capacity Storage · Backup & Restore Validation"]
+    VIR["Virtualization Layer<br/>Proxmox Cluster · Virtual Machines · Containers · Resource Boundaries"]
+    NET["Network & Security Layer<br/>Segmentation · Explicit Service Paths · Monitoring · Controlled Ingress"]
+    PHY["Physical Layer<br/>6 Custom-Built Nodes · Component Selection · Assembly · Custom Cabling"]
+
+    PHY --> NET --> VIR --> STO --> CMP --> AI --> APP --> GOV
+
+    classDef physical fill:#E8F0FE,stroke:#1A73E8,color:#102A43,stroke-width:2px;
+    classDef network fill:#E6F4EA,stroke:#188038,color:#102A43,stroke-width:2px;
+    classDef platform fill:#F3E8FD,stroke:#8430CE,color:#102A43,stroke-width:2px;
+    classDef compute fill:#FFF4E5,stroke:#C26401,color:#102A43,stroke-width:2px;
+    classDef control fill:#FCE8E6,stroke:#D93025,color:#102A43,stroke-width:2px;
+
+    class PHY physical;
+    class NET network;
+    class VIR,STO platform;
+    class CMP,AI compute;
+    class APP,GOV control;
